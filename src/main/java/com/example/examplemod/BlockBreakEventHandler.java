@@ -39,6 +39,7 @@ public class BlockBreakEventHandler {
         event.setCanceled(true);
         breakBlock(event.world,event.x,event.y,event.z,1);
     }
+
     private void breakBlock(World world,int x,int y,int z,int depth){
         if(depth>MAX_DEPTH){
             return;

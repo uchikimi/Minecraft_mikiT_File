@@ -25,7 +25,6 @@ import java.util.Random;
 public class MyBlock extends Block{
 
     public MyBlock(){
-
         super(Material.rock);
         setCreativeTab(CreativeTabs.tabBlock);
         setBlockName(ExampleMod.MODID + "_" + "myblock");
@@ -33,7 +32,6 @@ public class MyBlock extends Block{
         setHardness(10.0F);
         setResistance(6000.0F);
         setLightLevel(50.0F);
-
     }
 //myblockのtntがうまくいかない（下）
     /*

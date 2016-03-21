@@ -64,3 +64,4 @@ processResources
 runClient{
  jvmArgs "-Xmx1024m", "-Xms1024m"
 }
+sourceSets { main { output.resourcesDir = output.classesDir } }

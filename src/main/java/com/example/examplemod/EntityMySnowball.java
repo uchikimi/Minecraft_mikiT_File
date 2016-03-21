@@ -36,7 +36,10 @@ public class EntityMySnowball extends EntitySnowball {
                 position.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), damage);
             }else {
             }
+             EntityPlayer player=event.player;
+        ItemStack heldItem = player.getHeldItem();
 */
+
 
         if (position.entityHit != null) {
             position.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), damage1);
@@ -64,4 +67,5 @@ public class EntityMySnowball extends EntitySnowball {
         }
 
     }
+
 }

@@ -24,7 +24,7 @@ public class Blocka extends Block{
         setBlockTextureName(ExampleMod.MODID + ":MinecraftEnglish");
         setHardness(100F);
     }
-/*
+
     @Override
     public void registerBlockIcons(IIconRegister register){
         icons[0]=register.registerIcon(textureName+"");
@@ -32,12 +32,12 @@ public class Blocka extends Block{
         icons[2]=register.registerIcon(textureName+"");
         icons[3]=register.registerIcon(textureName+"");
     }
-*/
+
 
     //右クリック
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float posX, float posY, float posZ) {
-        Block block =world.getBlock(x,y,z);
+        //Block block =world.getBlock(x,y,z);
         world.setBlock(x,y,z, Blocks.air,0,2);
         world.setBlock(x,y+1,z,Blocks.sand,0,2);
         return super.onBlockActivated(world, x, y, z, player, side, posX, posY, posZ);

@@ -11,6 +11,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = ExampleMod.MODID, version = ExampleMod.VERSION)
@@ -34,27 +37,29 @@ public class ExampleMod {
     public static final Block J_ragyou = new J_ragyou();
     public static final Block J_wagyou = new J_wagyou();
     public static final Block J_etc = new J_etc();
-    //public static final Block SoundBlock = new BlockSound();
+    public static final Block SoundBlock = new BlockSound();
     public static final Block myblock2 = new MyBlock_2();
     private BlockLogicAnd blockLogicAnd;
     private ItemHerbicide ItemHerbicide;
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        customBlock();//既存ブロックの改造
-        myrecipe();//マイレシピ
-        setELiteeral();//英字ブロック
-        setJLiteral();//日本語ブロック
-        tipes();//チップスのMOD
+//        customBlock();//既存ブロックの改造
+//        myrecipe();//マイレシピ
+//        setELiteeral();//英字ブロック
+//        setJLiteral();//日本語ブロック
+//        tipes();//チップスのMOD
         original();//オリジナルMOD
-        textMod();//教科書のMOD
-        customSword();//myItem
+//        textMod();//教科書のMOD
+//        customSword();//myItem
+//        whitechicken();
+//        worldmod();
     }
     public void customBlock(){
         //既存ブロックの設定変更
         Blocks.water.setLightLevel(1.0f);  //水彩度
-        Blocks.dirt.setResistance(10.0f);  //土耐爆性
-        Blocks.dirt.setHardness(100.0f);  //土硬さ
+        //Blocks.dirt.setResistance(10.0f);  //土耐爆性
+       // Blocks.dirt.setHardness(100.0f);  //土硬さ
         Blocks.red_flower.setLightLevel(1.0f);  //赤い花彩度
     }  //既存ブロックの改造
     public void customSword() {
@@ -132,12 +137,27 @@ public class ExampleMod {
     }  //英字ブロック
     public void original(){
         GameRegistry.registerBlock(new MyBlock(), "myblock_1");  //マイレシピ
-        GameRegistry.registerBlock(new MyBlock_2(), "myblock_2");  //マイレシピ
-        GameRegistry.registerBlock(myblock2, "MyBlock2");
+        //GameRegistry.registerBlock(new MyBlock_2(), "myblock_2");  //マイレシピ
+
         GameRegistry.registerBlock(new MyBlock_3(), "myblock_3");  //マイレシピ
         GameRegistry.registerBlock(new Blocka(), "Blocka");
         GameRegistry.registerBlock(happybirthdayallen, "RainbowAllen");
+        GameRegistry.registerBlock(new MyBlockTest1(),"myblocktest1");
+        GameRegistry.registerItem(new ItemMyExplodeball(), "explodeball");
+
     }//オリジナルMOD
+    public void whitechicken(){
+        PotionEffect[] whitechicken = {
+                new PotionEffect(Potion.heal.id,1200,0)
+        };
+        GameRegistry.registerItem(new AllenModWhiteChicken("whitechicken",10,2.0f,false,whitechicken).setAlwaysEdible(),"whitechicken");
+    }
+    public void worldmod(){
+        GameRegistry.registerBlock(myblock2, "MyBlock2");
+        GameRegistry.registerWorldGenerator(new MyWorldGenerator(myblock2, 100), 1);
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(new BiomeGenMyBiome(40), 100));
+//        BiomeManager.addBiome(BiomeManager.BiomeType.ICY,new BiomeManager.BiomeEntry(new BiomeGenIceberg(41),30));
+    }
 }
 /*
         System.out.println("DIRT BLOCK >> " + Blocks.dirt.getUnlocalizedName());
